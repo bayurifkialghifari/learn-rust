@@ -480,3 +480,30 @@ fn array_iteration_test() {
         println!("i: {}", i);
     }
 }
+
+fn say_something(something: &str) {
+    println!("{}", something);
+}
+
+fn return_function(num1: i32, num2: i32) -> i32 {
+    return num1 + num2;
+}
+
+fn factorial(n: u32) -> u32 {
+    if n == 0 {
+        return 1;
+    }
+
+    return n * factorial(n - 1); // recursive
+}
+
+#[test]
+fn function_test() {
+    say_something("Hello, World!");
+
+    let res = return_function(1, 2);
+    println!("res: {}", res);
+
+    let fact = factorial(5);
+    println!("fact: {}", fact);
+}
