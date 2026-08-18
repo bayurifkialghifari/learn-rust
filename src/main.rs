@@ -43,3 +43,16 @@ fn static_type_test() {
 
     // println!("Hello {}", name);
 }
+
+#[test]
+fn shaddowing_test() {
+    let name = "Orang Tampan";
+
+    println!("Hello {}", name);
+
+    // Bukan best practice, nama variable bagus nya jangan sama
+
+    let name = 100;
+
+    println!("Hello {}", name);
+}
