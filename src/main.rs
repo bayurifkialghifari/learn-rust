@@ -188,12 +188,68 @@ fn tupple_test() {
     println!("tupple_mut: {:?}", tupple_mut);
 }
 
-fn unit() {
-    println!("Hello Unit");
-}
+// fn unit() {
+//     println!("Hello Unit");
+// }
 
 #[test]
 fn tupple_unit() {
-    let result: () = unit();
+    // let result: () = unit();
+    let result = ();
     println!("result: {:?}", result);
+}
+
+#[test]
+fn array_test() {
+    let arr: [i32; 5] = [1, 2, 3, 4, 5]; // panjang nya ga dinamis
+    println!("arr: {:?}", arr);
+    println!("arr 0: {}", arr[0]);
+    println!("arr 1: {}", arr[1]);
+    println!("arr 2: {}", arr[2]);
+    println!("arr 3: {}", arr[3]);
+    println!("arr 4: {}", arr[4]);
+
+    // Mutable array
+    let mut arr_mut = arr;
+    arr_mut[0] = 10;
+    arr_mut[1] = 20;
+    arr_mut[2] = 30;
+    arr_mut[3] = 40;
+    arr_mut[4] = 50;
+    println!("arr_mut: {:?}", arr_mut);
+
+    let panjang = arr_mut.len();
+    println!("panjang: {}", panjang);
+}
+
+#[test]
+fn two_dimensional_array_test() {
+    let matrix: [[i32; 3]; 3] = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+    println!("matrix: {:?}", matrix);
+    println!("matrix 0: {:?}", matrix[0]);
+    println!("matrix 1: {:?}", matrix[1]);
+    println!("matrix 2: {:?}", matrix[2]);
+
+    println!("matrix 0.0: {}", matrix[0][0]);
+    println!("matrix 0.1: {}", matrix[0][1]);
+    println!("matrix 0.2: {}", matrix[0][2]);
+    println!("matrix 1.0: {}", matrix[1][0]);
+    println!("matrix 1.1: {}", matrix[1][1]);
+    println!("matrix 1.2: {}", matrix[1][2]);
+    println!("matrix 2.0: {}", matrix[2][0]);
+    println!("matrix 2.1: {}", matrix[2][1]);
+    println!("matrix 2.2: {}", matrix[2][2]);
+
+    let mut matrix_mut = matrix;
+
+    matrix_mut[0][0] = 10;
+    matrix_mut[0][1] = 20;
+    matrix_mut[0][2] = 30;
+    matrix_mut[1][0] = 40;
+    matrix_mut[1][1] = 50;
+    matrix_mut[1][2] = 60;
+    matrix_mut[2][0] = 70;
+    matrix_mut[2][1] = 80;
+    matrix_mut[2][2] = 90;
+    println!("matrix_mut: {:?}", matrix_mut);
 }
