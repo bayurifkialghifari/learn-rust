@@ -94,3 +94,74 @@ fn data_type_conversion_test() {
     println!("i32: {}", i32);
     println!("i32_from_string: {}", i32_from_string);
 }
+
+#[test]
+fn numeric_operations_test() {
+    let a = 10;
+    let b = 20;
+    let sum = a + b;
+    let difference = a - b;
+    let product = a * b;
+    let quotient = a / b;
+    let sisa_hasil_bagi = b % a;
+
+    println!("sum: {}", sum);
+    println!("difference: {}", difference);
+    println!("product: {}", product);
+    println!("quotient: {}", quotient);
+    println!("sisa_hasil_bagi: {}", sisa_hasil_bagi);
+}
+
+#[test]
+fn augmented_assignment_test() {
+    let mut a = 10;
+
+    println!("a: {}", a);
+
+    a += 10;
+
+    println!("a: {}", a);
+
+    a -= 5;
+
+    println!("a: {}", a);
+
+    a *= 2;
+
+    println!("a: {}", a);
+
+    a /= 3;
+
+    println!("a: {}", a);
+
+    a %= 2;
+
+    println!("a: {}", a);
+}
+
+#[test]
+fn boolean_operations_test() {
+    let mut a = true;
+
+    println!("a: {}", a);
+
+    a = !a;
+
+    println!("a: {}", a);
+}
+
+#[test]
+fn comparison_operations_test() {
+    let a = 10;
+    let b = 20;
+
+    println!("a: {}", a);
+    println!("b: {}", b);
+
+    println!("a == b: {}", a == b);
+    println!("a != b: {}", a != b);
+    println!("a < b: {}", a < b);
+    println!("a > b: {}", a > b);
+    println!("a <= b: {}", a <= b);
+    println!("a >= b: {}", a >= b);
+}
