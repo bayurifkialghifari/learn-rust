@@ -261,3 +261,33 @@ fn const_test() {
 
     println!("PI: {}", PI);
 }
+
+/*
+ * Stack vs Heap
+ *
+ * Stack: int, float, char, bool, string, function, pointer itu semua masuk ke stack, stack itu sesuatu yang nilai nya udah fixed
+ *
+ * Heap: kaya gudang, buat semua yang nilainya belum fixed, kaya String, Vec, HashMap ini masuk ke heap soal nya string nya bisa ngurang bisa nambah
+ *
+ * Heap kalau udah keluar scope, maka data nya akan dihapus via trait Drop
+ *
+ */
+#[test]
+fn stack_heap_test() {
+    heap_stack_a();
+    heap_stack_b();
+}
+
+fn heap_stack_a() {
+    let a = 10; // masuk ke stack
+    let b = 9.4; // masuk ke stack
+    let c = String::from("qwe"); // masuk ke heap
+
+    println!("a: {}, b: {}, c: {}", a, b, c);
+}
+
+fn heap_stack_b() {
+    let a = "qweqweqwe"; // masuk ke stack
+    let b = String::from("qwe"); // masuk ke heap
+    println!("a: {}, b: {}", a, b);
+}
