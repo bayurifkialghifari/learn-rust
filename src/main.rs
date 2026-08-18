@@ -165,3 +165,35 @@ fn comparison_operations_test() {
     println!("a <= b: {}", a <= b);
     println!("a >= b: {}", a >= b);
 }
+
+#[test]
+fn tupple_test() {
+    // Tuple itu kaya array tapi bisa menyimpan tipe data yang berbeda
+
+    let t = (10, "GGWP");
+    println!("t: {:?}", t); // :? adalah format string untuk menampilkan tuple
+    println!("t.0: {}", t.0);
+    println!("t.1: {}", t.1);
+
+    let (a, b) = t;
+    println!("a: {}", a);
+    println!("b: {}", b);
+
+    let tupple: (i32, &str) = (a, b); // Explicitly annotate the type
+    println!("tupple: {:?}", tupple);
+
+    // mutable tuple
+    let mut tupple_mut = tupple;
+    tupple_mut.0 = 20;
+    println!("tupple_mut: {:?}", tupple_mut);
+}
+
+fn unit() {
+    println!("Hello Unit");
+}
+
+#[test]
+fn tupple_unit() {
+    let result: () = unit();
+    println!("result: {:?}", result);
+}
