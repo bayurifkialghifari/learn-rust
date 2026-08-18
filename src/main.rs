@@ -454,3 +454,29 @@ fn loop_label_test() {
         }
     }
 }
+
+#[test]
+fn array_iteration_test() {
+    let arr = [1, 2, 3, 4, 5];
+
+    // Pake while
+    let mut i = 0;
+    while i < arr.len() {
+        println!("index: {}, value: {}", i, arr[i]);
+        i += 1;
+    }
+
+    // Pake for
+    for (index, value) in arr.iter().enumerate() {
+        println!("index: {}, value: {}", index, value);
+    }
+
+    for value in arr {
+        println!("value: {}", value);
+    }
+
+    // Range
+    for i in 0..10 {
+        println!("i: {}", i);
+    }
+}
