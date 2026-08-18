@@ -253,3 +253,11 @@ fn two_dimensional_array_test() {
     matrix_mut[2][2] = 90;
     println!("matrix_mut: {:?}", matrix_mut);
 }
+
+#[test]
+fn const_test() {
+    // Constan harus langsung dikasih tipe data
+    const PI: f64 = 3.14;
+
+    println!("PI: {}", PI);
+}
