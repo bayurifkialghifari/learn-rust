@@ -32,3 +32,14 @@ fn variable_mutable_test() {
 
     println!("Hello {}", name);
 }
+
+#[test]
+fn static_type_test() {
+    let name = "Orang Tampan";
+
+    println!("Hello {}", name);
+
+    // name = 100; // Diawal string gabisa tiba tiba ganti jadi integer
+
+    // println!("Hello {}", name);
+}
