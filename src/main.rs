@@ -306,3 +306,43 @@ fn string_vs_str_test() {
 
     println!("string: {}, new_string: {}", string, new_string);
 }
+
+#[test]
+fn ownership_rules_test() {
+    // Basic semua juga sama
+
+    // a gabisa di akses sebelum diinisialisasi
+    let a = 10; // a bisa diakses
+
+    {
+        // b gabisa di akses
+        let b = 20; // b bisa diakses
+        println!("b: {}", b);
+    } // b gabisa diakses setelah keluar scope
+
+    println!("a: {}", a);
+} // ga bisa akses a, udah keluar scope
+
+#[test]
+fn data_copy_ownership_movement_test() {
+    let a = 100;
+    let b = a; // b adalah copy dari a, jadi bisa diakses setelah keluar scope
+
+    println!("a: {}, b: {}", a, b);
+
+    // Kalau heap ga bisa kaya diatas
+    let a = String::from("qwe");
+    let b = a; // a udah pindah ownership ke b
+
+    // println!("a: {}, b: {}", a, b); // Bakal error, a udah pindah ownership ke b
+
+    println!("a ga ada, b: {}", b);
+}
+
+#[test]
+fn clone_test() {
+    let a = String::from("qwe");
+    let b = a.clone(); // b adalah copy dari a, jadi bisa diakses setelah keluar scope
+
+    println!("a: {}, b: {}", a, b);
+}
