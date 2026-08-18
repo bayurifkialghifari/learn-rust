@@ -291,3 +291,18 @@ fn heap_stack_b() {
     let b = String::from("qwe"); // masuk ke heap
     println!("a: {}, b: {}", a, b);
 }
+
+#[test]
+fn string_vs_str_test() {
+    let name = " qwe ";
+    let trim = name.trim(); // ini return nya &str
+
+    println!("name: {}", name);
+    println!("trim: {}", trim);
+
+    let mut string: String = String::from("QWEQWE");
+    string.push_str(" 123123"); // Harus mutable
+    let new_string = string.replace("QWE", "123"); // Ini bakal ngebuat heap baru, jadi harus diassign ke variabel baru
+
+    println!("string: {}, new_string: {}", string, new_string);
+}
