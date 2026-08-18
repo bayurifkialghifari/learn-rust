@@ -507,3 +507,64 @@ fn function_test() {
     let fact = factorial(5);
     println!("fact: {}", fact);
 }
+
+/*
+ *
+ * Function ownership
+ *
+ */
+fn print_number(num: i32) {
+    println!("num: {}", num);
+}
+
+fn print_string(name: String) {
+    println!("name: {}", name);
+}
+
+#[test]
+fn ownership_function_test() {
+    let num = 5;
+    print_number(num);
+    println!("{}", num); // Ga error, num nya di copy ke print_number
+
+    let name = String::from("John");
+    print_string(name);
+    // println!("{}", name); // Bakal error, name sudah dipindahkan ke print_string
+    // Kalau mau tetep jalan harus print_string(name.clone())
+}
+
+fn full_name(first_name: String, last_name: String) -> String {
+    return format!("{} {}", first_name, last_name);
+}
+
+fn full_name_with_return_ownership(
+    first_name: String,
+    last_name: String,
+) -> (String, String, String) {
+    let full_name = format!("{} {}", first_name, last_name);
+    return (full_name, first_name, last_name);
+}
+
+#[test]
+fn return_value_function_ownership_test() {
+    let first_name = String::from("John");
+    let last_name = String::from("Doe");
+
+    let name = full_name(first_name, last_name);
+
+    println!("name: {}", name);
+    //     println!("first_name: {}", first_name); // Bakal error udah pindah owership ke function full_name
+    //     println!("last_name: {}", last_name);
+}
+
+#[test]
+fn full_name_with_return_ownership_test() {
+    let first_name = String::from("John");
+    let last_name = String::from("Doe");
+
+    let (full_name, first_name, last_name) = full_name_with_return_ownership(first_name, last_name);
+
+    println!("full_name: {}", full_name);
+    println!("first_name: {}", first_name);
+    println!("last_name: {}", last_name);
+}
