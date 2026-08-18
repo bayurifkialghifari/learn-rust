@@ -346,3 +346,31 @@ fn clone_test() {
 
     println!("a: {}, b: {}", a, b);
 }
+
+#[test]
+fn if_expression_test() {
+    // Sama aja kaya bahasa pemrograman lain
+    let nilai = 87;
+    let hasil: char;
+
+    if nilai >= 90 {
+        hasil = 'A';
+    } else if nilai >= 80 {
+        hasil = 'B';
+    } else {
+        hasil = 'C';
+    }
+
+    println!("nilai: {}, hasil: {}", nilai, hasil);
+
+    // Cara 2
+    let hasil2 = if nilai >= 90 {
+        'A'
+    } else if nilai >= 80 {
+        'B'
+    } else {
+        'C'
+    };
+
+    println!("nilai: {}, hasil2: {}", nilai, hasil2);
+}
