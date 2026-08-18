@@ -374,3 +374,83 @@ fn if_expression_test() {
 
     println!("nilai: {}, hasil2: {}", nilai, hasil2);
 }
+
+/*
+ *
+ * Loop di rust ada loop, while, for
+ * Bisa di break dan continue
+ *
+ */
+#[test]
+fn loop_test() {
+    let mut i = 0;
+
+    loop {
+        i += 1;
+        if i == 10 {
+            break;
+        }
+    }
+
+    println!("i: {}", i);
+}
+
+#[test]
+fn continue_test() {
+    let mut i = 0;
+
+    loop {
+        i += 1;
+
+        if i % 2 == 0 {
+            continue;
+        }
+
+        if i > 10 {
+            break;
+        }
+
+        println!("i: {}", i);
+    }
+}
+
+#[test]
+fn loop_return_test() {
+    let mut i = 0;
+    let res = loop {
+        i += 1;
+        if i == 10 {
+            break i;
+        }
+    };
+
+    println!("res: {}", res);
+}
+
+#[test]
+fn while_test() {
+    let mut i = 0;
+    while i < 10 {
+        i += 1;
+        println!("i: {}", i);
+    }
+}
+
+#[test]
+fn for_test() {
+    for i in 0..10 {
+        println!("i: {}", i);
+    }
+}
+
+#[test]
+fn loop_label_test() {
+    'outer: loop {
+        for i in 0..10 {
+            if i == 5 {
+                break 'outer;
+            }
+            println!("i: {}", i);
+        }
+    }
+}
