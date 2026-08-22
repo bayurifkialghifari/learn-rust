@@ -568,3 +568,61 @@ fn full_name_with_return_ownership_test() {
     println!("first_name: {}", first_name);
     println!("last_name: {}", last_name);
 }
+
+/*
+ *
+ * Reference: ada & mirip kaya di go
+ * reference itu immutable
+ * kalau ada variable let mut c, reference nya ga bisa diubah
+ *
+ */
+fn full_name_with_reference(first_name: &String, last_name: &String) -> String {
+    return format!("{} {}", first_name, last_name);
+}
+
+#[test]
+fn full_name_with_reference_test() {
+    let first_name = String::from("John");
+    let last_name = String::from("Doe");
+
+    let full_name = full_name_with_reference(&first_name, &last_name);
+
+    println!("full_name: {}", full_name);
+    println!("first_name: {}", first_name);
+    println!("last_name: {}", last_name);
+}
+
+/*
+ *
+ * Bakal error ini walaupun si name nya mutable
+ * reference, so it cannot be borrowed as mutable
+ *
+ */
+// fn change_reference(name: &String) {
+//     name.push_str("qweqwe");
+// }
+
+// #[test]
+// fn change_reference_test() {
+//     let mut name = String::from("John");
+//     change_reference(&name);
+//     println!("name: {}", name);
+// }
+
+/*
+ *
+ * Cara bisa mutable reference
+ *
+ * di 1 waktu cuma bisa ada 1 mutable reference
+ *
+ */
+fn change_reference(name: &mut String) {
+    name.push_str("qweqwe");
+}
+
+#[test]
+fn change_reference_test() {
+    let mut name = String::from("John");
+    change_reference(&mut name);
+    println!("name: {}", name);
+}
