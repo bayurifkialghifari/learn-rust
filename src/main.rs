@@ -626,3 +626,27 @@ fn change_reference_test() {
     change_reference(&mut name);
     println!("name: {}", name);
 }
+
+/*
+ *
+ * Dangling pointer
+ *
+ * Buat fix ini, langsung return value nya aja
+ *
+ */
+fn dangling_pointer() -> &String {
+    // 1. Variabel `teks` dibuat di memori
+    let teks = String::from("Halo Dunia");
+
+    // 2. Kita mengembalikan referensi (alamat) dari `teks`
+    return &teks;
+} // 3. Variabel teks otomatis dihapus dari memori!
+
+#[test]
+fn dangling_pointer_test() {
+    // pasti error
+    let alamat = dangling_pointer();
+    // alamat ga ada isi, soal nya si let teks itu udah dihapus
+
+    println!("alamat: {}", alamat);
+}
