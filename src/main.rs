@@ -670,3 +670,10 @@ fn slice_test() {
     let start_from_two = &array[2..];
     println!("start_from_two: {:?}", start_from_two);
 }
+
+#[test]
+fn string_slice_test() {
+    let string = String::from("Hello World");
+    let slice = &string[0..5];
+    println!("slice: {}", slice);
+}
