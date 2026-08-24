@@ -677,3 +677,58 @@ fn string_slice_test() {
     let slice = &string[0..5];
     println!("slice: {}", slice);
 }
+
+/*
+ *
+ * Struct mirip dto di php atau type di TypeScript
+ *
+ */
+struct Dog {
+    name: String,
+    age: u8,
+    nullable: Option<u8>,
+}
+
+#[test]
+fn struct_dog_test() {
+    // ini immutable default nya
+    let dog: Dog = Dog {
+        name: String::from("Wowo"),
+        age: 70,
+        nullable: Some(22), // None
+    };
+
+    println!(
+        "name: {}, age: {}, nullable: {}",
+        dog.name,
+        dog.age,
+        dog.nullable.unwrap_or(0)
+    );
+
+    // Copy struct, nanti ownership dog berubah
+    let mut dog_copy: Dog = Dog { ..dog };
+    dog_copy.name = String::from("Fifi");
+    dog_copy.age = 3;
+    dog_copy.nullable = Some(67);
+
+    println!("name dog 2: {}, age dog 2: {}", dog_copy.name, dog_copy.age);
+}
+
+// Struct mirip tuple, ga dikasih nama buat field field nya
+struct TupleStruct(u8, u8);
+
+#[test]
+fn tuple_struct_test() {
+    let tuple: TupleStruct = TupleStruct(1, 2);
+    println!("{}", tuple.0);
+    println!("{}", tuple.1);
+}
+
+// Struct kosong
+struct Nothing;
+
+#[test]
+fn nothing_test() {
+    // let nothing: Nothing = Nothing;
+    let _nothing: Nothing = Nothing; // Biar ga ada warning variable ga kepake pake _
+}
