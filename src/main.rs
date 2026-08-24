@@ -732,3 +732,42 @@ fn nothing_test() {
     // let nothing: Nothing = Nothing;
     let _nothing: Nothing = Nothing; // Biar ga ada warning variable ga kepake pake _
 }
+
+/*
+ *
+ * Method mirip function
+ *
+ */
+// Harus impl struct yang ada, di atas kan ada struct Dog. Jadi di sini impl struct Dog
+impl Dog {
+    fn say_hello(&self, name: &str) {
+        println!("Hello {}, my name is {}", name, self.name);
+    }
+}
+
+#[test]
+fn animal_say_hello_test() {
+    let dog = Dog {
+        name: String::from("Owi"),
+        age: 0,
+        nullable: None,
+    };
+
+    dog.say_hello("Wowo");
+}
+
+// Associated function, mirip static method
+impl TupleStruct {
+    fn new(a: u8, b: u8) -> Self {
+        TupleStruct(a, b)
+    }
+}
+
+#[test]
+fn tuple_struct_new_test() {
+    let tuple = TupleStruct::new(1, 2);
+
+    // Gabisa panggil tuple.new(1, 2) soal nya ga ada self di param pertama
+    println!("{}", tuple.0);
+    println!("{}", tuple.1);
+}
