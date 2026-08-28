@@ -887,3 +887,49 @@ fn pattern_matching_value_test() {
         _ => println!("Number is >10"),
     }
 }
+
+#[test]
+fn pattern_matching_struct_test() {
+    let tupple = TupleStruct::new(16, 20);
+
+    match tupple {
+        TupleStruct(_, 15) => println!("123"),
+        TupleStruct(_, 20) => println!("344"),
+        _ => println!("default"),
+    }
+
+    let dog = Dog {
+        name: String::from("W"),
+        age: 15,
+        nullable: None,
+    };
+
+    // Ignore .. harus di akhir
+    match dog {
+        Dog { age: 2, .. } => {
+            println!("Dog: name={} age={}", dog.name, dog.age);
+        }
+        Dog { age: 15, .. } => {
+            println!("Dog: name={} age={}", dog.name, dog.age);
+        }
+        Dog { .. } => {
+            println!("Dog: name={} age={}", dog.name, dog.age);
+        }
+    }
+}
+
+
+#[test]
+fn test_match_expresion_test() {
+    let value = 5;
+    let result = match value {
+        1 => "One",
+        2 => "Two",
+        3 => "Three",
+        4 => "Four",
+        5 => "Five",
+        _ => "Other",
+    };
+
+    println!("Result: {}", result);
+}
