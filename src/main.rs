@@ -771,3 +771,80 @@ fn tuple_struct_new_test() {
     println!("{}", tuple.0);
     println!("{}", tuple.1);
 }
+
+/*
+ *
+ * Enum
+ *
+ */
+enum Status {
+    ACTIVE,
+    INACTIVE,
+    PENDING,
+}
+
+#[test]
+fn status_enum_test() {
+    let _active: Status = Status::ACTIVE;
+    let _inactive: Status = Status::INACTIVE;
+    let _pending: Status = Status::PENDING;
+}
+
+// Enum data
+enum StatusValue {
+    Active(u8),
+    Inactive(u8),
+    Pending(u8),
+}
+
+#[test]
+fn status_value_test() {
+    let _active: StatusValue = StatusValue::Active(1);
+    let _inactive: StatusValue = StatusValue::Inactive(2);
+    let _pending: StatusValue = StatusValue::Pending(3);
+}
+
+// Enum function
+impl StatusValue {
+    fn activate(&self, status: u8) {
+        println!("Active: {}", status);
+    }
+}
+
+#[test]
+fn status_function_test() {
+    let _active = StatusValue::Active(1);
+    _active.activate(5);
+
+    let _inactive = StatusValue::Inactive(2);
+    _inactive.activate(5);
+
+    let _pending = StatusValue::Pending(3);
+    _pending.activate(5);
+}
+
+// Cara akses enum data, pake pattern matching
+#[test]
+fn status_pattern_matching_test() {
+    let _active = Status::ACTIVE;
+    let _inactive = Status::INACTIVE;
+    let _pending = Status::PENDING;
+
+    match _active {
+        Status::ACTIVE => println!("Active"),
+        Status::INACTIVE => println!("Inactive"),
+        Status::PENDING => println!("Pending"),
+    }
+
+    match _inactive {
+        Status::ACTIVE => println!("Active"),
+        Status::INACTIVE => println!("Inactive"),
+        Status::PENDING => println!("Pending"),
+    }
+
+    match _pending {
+        Status::ACTIVE => println!("Active"),
+        Status::INACTIVE => println!("Inactive"),
+        Status::PENDING => println!("Pending"),
+    }
+}
