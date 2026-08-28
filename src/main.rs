@@ -918,7 +918,6 @@ fn pattern_matching_struct_test() {
     }
 }
 
-
 #[test]
 fn test_match_expresion_test() {
     let value = 5;
@@ -932,4 +931,14 @@ fn test_match_expresion_test() {
     };
 
     println!("Result: {}", result);
+}
+
+// Type alis
+type Age = u8;
+
+#[test]
+fn test_type_alias() {
+    let age: Age = 10;
+
+    println!("Age: {}", age);
 }
