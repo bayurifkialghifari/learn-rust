@@ -792,35 +792,44 @@ fn status_enum_test() {
 
 // Enum data
 enum StatusValue {
-    Active(u8),
-    Inactive(u8),
-    Pending(u8),
+    Active(u8, String),
+    Inactive(u8, String),
+    Pending(u8, String),
 }
 
 #[test]
 fn status_value_test() {
-    let _active: StatusValue = StatusValue::Active(1);
-    let _inactive: StatusValue = StatusValue::Inactive(2);
-    let _pending: StatusValue = StatusValue::Pending(3);
+    let _active: StatusValue = StatusValue::Active(1, String::from("Active"));
+    let _inactive: StatusValue = StatusValue::Inactive(2, String::from("Inactive"));
+    let _pending: StatusValue = StatusValue::Pending(3, String::from("Pending"));
 }
 
 // Enum function
 impl StatusValue {
-    fn activate(&self, status: u8) {
-        println!("Active: {}", status);
+    // fn activate(&self, status: u8) {
+    //     println!("Active: {}", status);
+    // }
+
+    // Destructuring enum data
+    fn change_status(&self, status: u8) {
+        match self {
+            StatusValue::Active(_, message) => println!("Active: {}, {}", status, message),
+            StatusValue::Inactive(_, message) => println!("Inactive: {}, {}", status, message),
+            StatusValue::Pending(_, message) => println!("Pending: {}, {}", status, message),
+        }
     }
 }
 
 #[test]
 fn status_function_test() {
-    let _active = StatusValue::Active(1);
-    _active.activate(5);
+    let _active = StatusValue::Active(1, String::from("Change Active"));
+    _active.change_status(5);
 
-    let _inactive = StatusValue::Inactive(2);
-    _inactive.activate(5);
+    let _inactive = StatusValue::Inactive(2, String::from("Change Inactive"));
+    _inactive.change_status(5);
 
-    let _pending = StatusValue::Pending(3);
-    _pending.activate(5);
+    let _pending = StatusValue::Pending(3, String::from("Change Pending"));
+    _pending.change_status(5);
 }
 
 // Cara akses enum data, pake pattern matching
