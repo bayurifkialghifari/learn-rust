@@ -857,3 +857,33 @@ fn status_pattern_matching_test() {
         Status::PENDING => println!("Pending"),
     }
 }
+
+// Sama kaya di php
+#[test]
+fn pattern_matching_value_test() {
+    let mut name = "WOWO";
+
+    match name {
+        "OWI" => println!("Hallo OWI"),
+        "FUFU FAFA" => println!("Hallo FUFU FAFA"),
+        other => println!("Hallo {}", other),
+    }
+
+    // Multiple pattern matching
+    name = "OWI";
+
+    match name {
+        "OWI" | "FUFU FAFA" => println!("Hallo OWI/FUFU FAFA"),
+        _ => println!("Hallo {}", name),
+    }
+
+    // Range pattern matching
+    let number = 10;
+
+    // Harus inclusive ran
+    match number {
+        0..=5 => println!("Number is 0-5"),
+        6..=10 => println!("Number is 6-10"),
+        _ => println!("Number is >10"),
+    }
+}
